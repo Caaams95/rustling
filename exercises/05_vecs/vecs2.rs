@@ -1,19 +1,31 @@
 /// Write up:
-/// Dans vec_loop nous voulons modifier la valeur d'element en la multipliant par 2.
-/// Afin de modifier directement la valeur d'element, nous devons utiliser * .
-/// * permet d'acceder directment et de modifier le contenu réel d'element.
-/// Faire une boucle for permet de parcourir le contenu de v
-/// Le ; a la fin de *element *= 2; signifie que l'on souhaite pas returner 
-/// mais bien modifier le contenu d'element
+/// vec_loop:
+/// Dans vec_loop nous voulons modifier la valeur de chaque element 
+/// du vecteur v en la multipliant par 2.
+/// Afin de parcourir de chaque element,
+/// nous allons utiliser l'itérateur iter_mut() qui permet de parcourir 
+/// la collection tout en autorisant la modification des éléments pendant l'itération.
 /// 
-/// Dans vec_map nous souhaitons juste retourner la valeur x 2
-/// afin d'accelerer le code et de faciliter la lecture, nous faisons donc un iter().map...
-/// celui ci nous permet de parcourir le contenu de v et de stocker chaque contenu 1 par 1
-/// dans la variable entre ||, ici element
-/// nous souhaitons juste retourner la valeur donc on ne doit pas mettre de ;
-/// element stockant bien chaque element de v, nous pouvons le multiplié par 2 sans ;
-/// afin de le retourner
-/// .collect() permet de faire les traitements qu'on a mis dans le map()
+/// Pour modifier le contenu de "element" qui lui devient chaque contenu du vecteur v,
+/// nous devons utiliser * .
+/// L'opérateur * est utilisé pour déréférencer un pointeur. 
+/// Dans ce contexte, "element" est un pointeur vers l'élément actuel dans la collection. 
+/// *element donne accès à la valeur pointée par cet élément.
+/// 
+/// Le ; à la fin de *element *= 2; signifie que l'on souhaite pas retourner 
+/// mais bien modifier le contenu d'element.
+/// *element *= 2; <==> *element = *element * 2;
+/// 
+/// vec_map:
+/// Dans vec_map nous souhaitons juste retourner la valeur multiplier par 2.
+/// Afin de parcourir en lecture v, nous faisons donc un iter().
+/// La méthode iter() est appelée sur la référence du vecteur v. 
+/// Elle renvoie un itérateur sur les éléments du vecteur, permettant de parcourir chaque élément de manière immuable.
+/// Chaque element sera stocké dans la variable entre ||, ici "element".
+/// .collect() est utilisée pour collecter les résultats de la transformation
+///  effectuée par map et les stocker dans un nouveau vecteur. => "ans" dans notre cas.
+///     let ans = vec_map(&v);
+/// ans stockera dont les meme donnée et v mais tout multiplié par 2
 
  
 // vecs2.rs
