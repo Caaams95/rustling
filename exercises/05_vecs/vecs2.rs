@@ -13,7 +13,7 @@
 /// nous souhaitons juste retourner la valeur donc on ne doit pas mettre de ;
 /// element stockant bien chaque element de v, nous pouvons le multiplié par 2 sans ;
 /// afin de le retourner
-/// .collect() permet de faire les traitements qu'on a mis dans le map() 
+/// .collect() permet de faire les traitements qu'on a mis dans le map()
 
 
 // vecs2.rs
