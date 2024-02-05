@@ -15,7 +15,7 @@
 /// afin de le retourner
 /// .collect() permet de faire les traitements qu'on a mis dans le map()
 
-
+ 
 // vecs2.rs
 //
 // A Vec of even numbers is given. Your task is to complete the loop so that
