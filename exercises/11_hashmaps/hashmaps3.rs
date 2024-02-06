@@ -1,3 +1,33 @@
+/// Write up
+/// Ici nous utilisons des hashmap afin de stocker chaque données.
+/// Une Hashmap est une structure de données dans laquelle des paires clé-valeur sont stockées
+///  de manière à permettre un accès rapide à la valeur associée à une clé particulière.
+/// 
+/// Explication de code:
+///     let team1 = scores.entry(team_1_name.clone()).or_insert(Team {
+/// 
+/// team_1_name.clone(): Clone le nom de l'équipe 1. 
+/// Cela est nécessaire car team_1_name est de type String, 
+/// et lorsqu'on insère une valeur dans une Hashmap, la propriété (ownership) est transférée. 
+/// En clonant, on évite de transférer la propriété et on crée une nouvelle chaîne avec le même contenu.
+///
+/// scores.entry(team_1_name.clone()): Utilise la méthode entry sur la Hashmap scores pour 
+/// récupérer une entrée correspondant à la clé team_1_name. 
+/// Si l'entrée existe, elle est retournée. 
+/// Sinon, une nouvelle entrée est créée avec la clé team_1_name et une valeur par défaut.
+///
+/// .or_insert(Team { goals_scored: 0, goals_conceded: 0 }): Si l'entrée correspondante n'existe pas,
+/// cette méthode insère la valeur par défaut spécifiée (une nouvelle instance de la structure 
+/// Team avec goals_scored et goals_conceded initialisés à 0) et renvoie une référence 
+/// mutable à cette valeur.
+/// Si l'entrée existait déjà, elle renvoie une référence mutable à la valeur existante.
+/// 
+/// Gestion des goals :
+///     team1.goals_scored += team_1_score;
+///     team1.goals_conceded += team_2_score;
+/// On fait une simple addition de la variable goals_XXX de la team en question
+/// 
+/// 
 // hashmaps3.rs
 //
 // A list of scores (one per line) of a soccer match is given. Each line is of
@@ -14,7 +44,6 @@
 // Execute `rustlings hint hashmaps3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 use std::collections::HashMap;
 
@@ -39,6 +68,23 @@ fn build_scores_table(results: String) -> HashMap<String, Team> {
         // will be the number of goals conceded by team_2, and similarly
         // goals scored by team_2 will be the number of goals conceded by
         // team_1.
+
+        let team1 = scores.entry(team_1_name.clone()).or_insert(Team {
+            goals_scored: 0,
+            goals_conceded: 0,
+        });
+        team1.goals_scored += team_1_score;
+        team1.goals_conceded += team_2_score;
+
+        let team2 = scores.entry(team_2_name.clone()).or_insert(Team {
+            goals_scored: 0,
+            goals_conceded: 0,
+        });
+        team2.goals_conceded += team_1_score;
+        team2.goals_scored += team_2_score;
+
+
+        
     }
     scores
 }
