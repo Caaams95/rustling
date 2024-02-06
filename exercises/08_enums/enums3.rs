@@ -1,3 +1,37 @@
+/// Write up
+/// enum Message: Cela déclare un enum (énumération) en Rust. 
+/// Un enum est un type de données qui permet de représenter un ensemble de valeurs choisi.
+/// 
+/// Ici on a donc :
+/// Move qui est du type Point, une structure contenant de variable: x, y.
+/// Echo qui est un String contenant un message.
+/// ChangeColor(u8,u8,u8) qui prendra en parametre 3 nombres representant les couleur, RGB.
+///
+/// Ensuite nous avons une structure State assez basic.
+/// Celle-ci à des fonctions qui lui sont implémentées
+/// implementer ces fonctions permettent de modifier la structure que refére la fonction lors de son utilisation
+/// 
+/// On a donc notre grosse fonction "fn process(&mut self, message: Message)" 
+/// qui prend en parametre self qui est serra un State mutable (= modifiable) et un message
+/// Les traitement fait sur le State dependeront donc du message
+/// Le message s'utilise comme ceci:
+///     Message::[Mettre une des valeur de enum]
+///     exemple : Message::ChangeColor(255, 0, 255)
+/// 
+/// Dans process on va donc configurer chaque possibilité de message grace a un "match"
+/// match permet de verifier le contenu du message et de reagire en conséquence:
+///     Est ce que c'est un Move? Si oui, que dois je faire
+///     Est ce que c'est un Echo? Si oui, que dois je faire
+///     ...
+/// Ensuite le message ainsi que le parametre de celui ci permettront de modifier le State passé par self grace au fonction comme ci dessous:
+///     fn change_color(&mut self, color: (u8, u8, u8)) {
+///         self.color = color;
+/// 
+/// Ici, la couleur de self serra egal a la nouvelle couleur passé par change_color.
+/// self est bien modifiable car on l'a definit comme &mut
+
+
+
 // enums3.rs
 //
 // Address all the TODOs to make the tests pass!
@@ -5,10 +39,13 @@
 // Execute `rustlings hint enums3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 enum Message {
     // TODO: implement the message variant types based on their usage below
+    Move(Point),
+    Echo(String),
+    ChangeColor(u8,u8,u8),
+    Quit
 }
 
 struct Point {
@@ -44,6 +81,21 @@ impl State {
         // TODO: create a match expression to process the different message variants
         // Remember: When passing a tuple as a function argument, you'll need extra parentheses:
         // fn function((t, u, p, l, e))
+        match message{
+            Message::ChangeColor(r, g, b) => {
+                self.change_color((r,g,b));
+            }
+            Message::Echo(s) => {
+                self.echo(s);
+            }
+            Message::Move(Point{ x, y }) => {
+                self.move_position(Point { x, y });
+            }
+            Message::Quit => {
+                self.quit();
+            }
+            
+        }
     }
 }
 
