@@ -1,3 +1,6 @@
+/// Write up
+/// Pour stocker 2 dans "second", on utilise numbers.1 car 2 se situe à l'index 1 du tuple numbers
+
 // primitive_types6.rs
 //
 // Use a tuple index to access the second element of `numbers`. You can put the
