@@ -1,3 +1,7 @@
+/// Write up
+// .clone() est une méthode en Rust qui crée une copie d'une valeur, allouant une nouvelle mémoire pour l'objet cloné.
+/// Dans notre as, cela evite de perdre le contenu de data
+
 // move_semantics6.rs
 //
 // You can't change anything except adding or removing references.
