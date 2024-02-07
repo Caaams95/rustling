@@ -1,6 +1,8 @@
 /// Wirte up
 /// const NUMBER : i32 = 3;
 /// metre un ": <type>" après le nom d'une variable sert a definir le type de cette variable
+/// const ici signifie que NUMBER est une constante 
+/// i32 signifie que NUMBER est du type integer signé 32 bits
 
 // variables6.rs
 //
