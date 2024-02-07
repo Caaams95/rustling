@@ -1,3 +1,8 @@
+/// Write up
+/// Ici on fait retourner un integer grace a un if pour initier identifier
+/// Pour se faire, il suffit juste de faire un if-else normal apres un "let var="
+
+
 // if3.rs
 //
 // Execute `rustlings hint if3` or use the `hint` watch subcommand for a hint.
