@@ -1,3 +1,43 @@
+/// Write UP
+///     map.iter().fold(0, |acc, (_, v)| { if v == &value {acc + 1} else {acc}})
+/// Cette ligne itère sur les valeurs de la HashMap (map), comptant combien d'entre 
+/// elles sont égales à la valeur spécifiée. Le résultat est le décompte total des 
+/// occurrences.
+///  
+/// - map.iter(): crée un itérateur sur les paires clé-valeur de la HashMap (map).
+/// - .fold(0, |acc, (_, v)| { if v == &value {acc + 1} else {acc}}): La méthode fold 
+/// est utilisée pour accumuler une valeur sur l'itérateur. Elle prend une valeur initiale 
+/// pour l'accumulateur (0 dans ce cas) et une fermeture (fonction anonyme) en argument.
+/// - |acc, (_, v)|: C'est la liste de paramètres de la fermeture. acc est 
+/// l'accumulateur, et (_, v) est un modèle de déstructuration qui représente 
+/// chaque paire clé-valeur dans l'itération. Nous ignorons la clé (_) et utilisons 
+/// seulement la valeur (v).
+/// - { if v == &value {acc + 1} else {acc}}: C'est le corps de la fermeture. 
+/// Il vérifie si la valeur actuelle (v) est égale à la valeur cible (&value). 
+/// Si c'est le cas, il incrémente l'accumulateur (acc + 1) ; sinon, il laisse 
+/// l'accumulateur inchangé (acc).
+/// 
+/// ===
+/// 
+///     collection.iter().fold(0, |acc, x| acc + count_iterator(x, value))
+/// Cette ligne itère sur la collection de HashMaps, utilisant la fonction 
+/// count_iterator pour compter les occurrences de la valeur spécifiée dans chaque 
+/// HashMap. Les résultats sont accumulés, et la somme finale est renvoyée comme 
+/// résultat.
+/// 
+/// collection.iter().fold(0, |acc, x| acc + count_iterator(x, value))
+
+/// - collection.iter(): Cela crée un itérateur sur les éléments de la collection (collection), 
+/// qui sont des HashMaps dans ce cas.
+/// - .fold(0, |acc, x| acc + count_iterator(x, value)): Similaire à la ligne précédente, 
+/// elle utilise la méthode fold pour accumuler une valeur sur l'itérateur.
+/// |acc, x|: Cette fermeture prend deux paramètres, où acc est l'accumulateur, 
+/// et x représente chaque élément dans l'itération (chaque HashMap dans ce cas).
+/// - { acc + count_iterator(x, value) }: C'est le corps de la fermeture. 
+/// Il incrémente l'accumulateur (acc) du résultat de l'appel de la fonction
+/// count_iterator sur l'élément actuel (x).
+/// 
+
 // iterators5.rs
 //
 // Let's define a simple model to track Rustlings exercise progress. Progress
@@ -11,7 +51,6 @@
 // Execute `rustlings hint iterators5` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 use std::collections::HashMap;
 
@@ -35,7 +74,9 @@ fn count_for(map: &HashMap<String, Progress>, value: Progress) -> usize {
 fn count_iterator(map: &HashMap<String, Progress>, value: Progress) -> usize {
     // map is a hashmap with String keys and Progress values.
     // map = { "variables1": Complete, "from_str": None, ... }
-    todo!();
+    //todo!();
+    map.iter().fold(0, |acc, (_, v)| { if v == &value {acc + 1} else {acc}})
+
 }
 
 fn count_collection_for(collection: &[HashMap<String, Progress>], value: Progress) -> usize {
@@ -54,7 +95,9 @@ fn count_collection_iterator(collection: &[HashMap<String, Progress>], value: Pr
     // collection is a slice of hashmaps.
     // collection = [{ "variables1": Complete, "from_str": None, ... },
     //     { "variables2": Complete, ... }, ... ]
-    todo!();
+    //todo!();
+    collection.iter().fold(0, |acc, x| acc + count_iterator(x, value))
+
 }
 
 #[cfg(test)]
