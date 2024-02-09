@@ -1,3 +1,14 @@
+/// Write up
+/// fn some_func(item: impl SomeTrait + OtherTrait) -> bool 
+/// indique que la fonction some_func prend un argument item qui 
+/// doit être d'un type implémentant à la fois le trait SomeTrait 
+/// et le trait OtherTrait. La fonction renvoie un booléen qui est 
+/// le résultat de l'opération logique ET (&&) entre les résultats 
+/// des fonctions some_function et other_function appelées sur 
+/// l'objet item.
+
+
+
 // traits5.rs
 //
 // Your task is to replace the '??' sections so the code compiles.
@@ -6,6 +17,8 @@
 //
 // Execute `rustlings hint traits5` or use the `hint` watch subcommand for a
 // hint.
+
+
 
 
 pub trait SomeTrait {
